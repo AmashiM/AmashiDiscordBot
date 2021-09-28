@@ -1,6 +1,7 @@
-from discord.ext import commands
+
+from pycord.discord.ext import commands
+import pycord.discord as discord
 import requests
-from discord import Embed
 
 class Fun(commands.Cog):
   def __init__(self, bot):
@@ -10,17 +11,20 @@ class Fun(commands.Cog):
     res = requests.get("https://evilinsult.com//generate_insult.php")
     return res.text
 
-  @commands.command()
+  def create_embed(self, title: str, text: str):
+    return discord.Embed(
+      title=title,
+      color=self.color,
+      description=text
+    )
+
+
+  @commands.command(name="insult")
   async def insult(self, ctx: commands.Context):
     insult = await self.get_insult()
 
-    embed = Embed(
-      title="Insult",
-      color=self.bot.color,
-      description=f"> {insult}"
-    )
     await ctx.send(
-      embed=embed
+      embed=self.create_embed("Insult", f"> {insult}")
     )
 
 

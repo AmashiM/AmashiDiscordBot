@@ -1,4 +1,6 @@
-from discord.ext import commands
+from pycord.discord.ext import commands
+import pycord.discord as discord
+from pycord.discord import Embed
 import requests
 import json
 from discord import Embed

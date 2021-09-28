@@ -1,8 +1,7 @@
 
-import discord
-from discord import embeds
-from discord.embeds import Embed
-from discord.ext import commands
+from pycord.discord.ext import commands
+import pycord.discord as discord
+from pycord.discord import Embed
 import pysourcebin as sbin
 from discord_components import Button, ButtonStyle, Interaction, interaction
 import re

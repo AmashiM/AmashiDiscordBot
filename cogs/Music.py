@@ -1,14 +1,12 @@
 import collections
-from discord.colour import Color
-from discord.embeds import Embed
-from discord.ext import commands
 import youtube_dl
 import discord.ext.music as m
 import discord
 from random import shuffle, choice
 from collections import namedtuple
 import py_youtube as yti
-
+from pycord.discord.ext import commands
+import pycord.discord as discord
 
 
 
@@ -85,7 +83,7 @@ class Music(commands.Cog):
       url2 = info['formats'][0]['url']
       source = await discord.FFmpegOpusAudio.from_probe(url2, **self.FFMPEG_OPTIONS)
 
-      embed = Embed(
+      embed = discord.Embed(
         title=video['title'],
         color=self.bot.color
       )

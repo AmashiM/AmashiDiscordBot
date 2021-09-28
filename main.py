@@ -1,18 +1,18 @@
-from discord.ext import commands
 from dotenv import load_dotenv
 import os
-import discord
-from discord_components import DiscordComponents
+from discord_components import DiscordComponents, ComponentsBot
 
 load_dotenv()
 
+from pycord.discord.ext import commands
+import pycord.discord as discord
 
-class Bot(commands.Bot):
+
+class Bot(commands.Bot, ComponentsBot):
   def __init__(self, command_prefix, help_command=commands.DefaultHelpCommand(), description=None, **options):
-    super().__init__(command_prefix, help_command=help_command, description=description, **options)
+    super(Bot, self).__init__(command_prefix, help_command=help_command, description=description, **options)
 
     self.color = discord.Color.from_rgb(221, 69, 245)
-    DiscordComponents(self)
 
 
 
@@ -32,7 +32,10 @@ cogs = [
 
 for cog in cogs:
   print(f"registering cog: {cog}")
-  bot.load_extension(cog)
+  try:
+    bot.load_extension(cog)
+  except Exception as err:
+    print(err)
 print("done registering")
 
 

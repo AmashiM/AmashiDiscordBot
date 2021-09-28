@@ -1,13 +1,10 @@
 
-from discord.ext.commands.errors import BadColorArgument
+from pycord.discord.ext import commands
+import pycord.discord as discord
 import requests
-from discord.ext import commands
-from requests.api import request
 
 from database import words
-import json
 import ai_math
-import discord
 import re
 
 regex = re.compile(" +|\\n+", flags=re.DOTALL|re.IGNORECASE|re.MULTILINE)
@@ -36,6 +33,8 @@ class WordFilter(commands.Cog):
 
   @commands.Cog.listener("on_message")
   async def on_message(self, message: discord.Message):
+    if(message.author.bot):
+      return
     words = regex.split(message.content)
 
     marks = []
