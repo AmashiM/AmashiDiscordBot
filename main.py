@@ -3,7 +3,7 @@ import os
 from discord_components import DiscordComponents, ComponentsBot
 
 load_dotenv()
-
+import
 from pycord.discord.ext import commands
 import pycord.discord as discord
 
