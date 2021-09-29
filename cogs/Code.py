@@ -1,6 +1,6 @@
 
-from custom_pycord.discord.ext import commands
-import custom_pycord.discord as discord
+from discord.ext import commands
+import discord
 import pysourcebin as sbin
 from discord_components import Button, ButtonStyle, Interaction, interaction
 import re

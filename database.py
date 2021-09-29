@@ -10,7 +10,7 @@ if os.getenv("URI") is None:
 
 
 client = pymongo.MongoClient(os.getenv("URI"))
-db = client.get_database("")
+db = client.get_database("AmashiBot")
 
 users = db.get_collection("users")
 guilds = db.get_collection("users")

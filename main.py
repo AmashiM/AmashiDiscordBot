@@ -3,11 +3,11 @@ import os
 from discord_components import DiscordComponents, ComponentsBot
 
 load_dotenv()
-from custom_pycord.discord.ext import commands
-import custom_pycord.discord as discord
+from discord.ext import commands
+import discord
 
 
-class Bot(commands.Bot, ComponentsBot):
+class Bot(ComponentsBot, commands.Bot):
   def __init__(self, command_prefix, help_command=commands.DefaultHelpCommand(), description=None, **options):
     super(Bot, self).__init__(command_prefix, help_command=help_command, description=description, **options)
 

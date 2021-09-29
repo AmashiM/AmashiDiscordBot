@@ -1,6 +1,6 @@
 
-from custom_pycord.discord.ext import commands
-import custom_pycord.discord as discord
+from discord.ext import commands
+import discord
 import requests
 
 class Fun(commands.Cog):

@@ -11,6 +11,8 @@ val = [
   ["how are you", ["how you", ['been', 'doing']]]
 ]
 
+
+
 def get_all_strings(values: list) -> list[str]:
   txt = []
   for i in values:
@@ -79,6 +81,8 @@ def pros(values: list):
   res = []
 
   combos = [" ".join(list(i)) for i in list(itertools.combinations(strings, len(values)))]
+
+  print(combos)
 
   combos = [ c for c in combos if regex.fullmatch(c) != None]
 
