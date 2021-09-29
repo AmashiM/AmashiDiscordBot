@@ -1,6 +1,6 @@
-from pycord.discord.ext import commands
-import pycord.discord as discord
-from pycord.discord.ext.commands.errors import (
+from custom_pycord.discord.ext import commands
+import custom_pycord.discord as discord
+from custom_pycord.discord.ext.commands.errors import (
   ExtensionAlreadyLoaded,
   ExtensionError,
   ExtensionNotLoaded,
@@ -138,7 +138,7 @@ class Dev(commands.Cog):
       id="cog menu",
       placeholder="Choose An Extension Menu"
     )
-    
+
 
     await ctx.send(
       content="no Content",
@@ -153,7 +153,7 @@ class Dev(commands.Cog):
     id: str = data.get('id')
     category, command = id.split(" ")
     option = interaction.values[0]
-    
+
     if category == 'cog':
       if command == 'menu':
         if option == 'reload':
@@ -173,7 +173,7 @@ class Dev(commands.Cog):
 
         elif option == 'load':
           opts = self.cog_file_options("load")
-          
+
           embed = discord.Embed(title=option,color=self.bot.color)
 
           await interaction.respond(
@@ -187,7 +187,7 @@ class Dev(commands.Cog):
           )
         elif option == 'unload':
           opts = self.cog_file_options("unload")
-          
+
           embed = discord.Embed(title=option,color=self.bot.color)
 
           await interaction.respond(

@@ -1,6 +1,6 @@
 
-from pycord.discord.ext import commands
-import pycord.discord as discord
+from custom_pycord.discord.ext import commands
+import custom_pycord.discord as discord
 import requests
 
 from database import words

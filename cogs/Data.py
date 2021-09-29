@@ -1,9 +1,8 @@
-from pycord.discord.ext import commands
-import pycord.discord as discord
-from pycord.discord import Embed
+from custom_pycord.discord.ext import commands
+import custom_pycord.discord as discord
+from custom_pycord.discord import Embed
 import requests
 import json
-from discord import Embed
 
 class Data(commands.Cog):
   def __init__(self, bot) -> None:

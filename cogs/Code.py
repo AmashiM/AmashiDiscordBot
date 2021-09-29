@@ -1,7 +1,6 @@
 
-from pycord.discord.ext import commands
-import pycord.discord as discord
-from pycord.discord import Embed
+from custom_pycord.discord.ext import commands
+import custom_pycord.discord as discord
 import pysourcebin as sbin
 from discord_components import Button, ButtonStyle, Interaction, interaction
 import re
@@ -45,7 +44,7 @@ class Code(commands.Cog):
 
           url = await self.create_sbin(f"{self.bot.user}'s Code", txt)
 
-          embed = Embed(
+          embed = discord.Embed(
             title="__**Sourcebin**__",
             url= url,
             color=self.bot.color,
@@ -95,7 +94,7 @@ class Code(commands.Cog):
       if len(txt) > 2000:
         txt = txt[:1990] + '...'
 
-      embed = Embed(
+      embed = discord.Embed(
         title="Sourcbin Contents",
         description=f"```\n{txt}\n```",
         color=self.bot.color
