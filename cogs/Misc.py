@@ -3,7 +3,12 @@ from discord.ext import commands
 import discord
 import requests
 
-class Fun(commands.Cog):
+
+
+
+
+
+class Misc(commands.Cog):
   def __init__(self, bot):
     self.bot = bot
 
@@ -33,4 +38,4 @@ class Fun(commands.Cog):
 
 
 def setup(bot):
-  bot.add_cog(Fun(bot))
+  bot.add_cog(Misc(bot))

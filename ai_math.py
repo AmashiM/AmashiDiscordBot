@@ -2,19 +2,17 @@
 from math import floor
 
 def jaro_distance(s1: str, s2: str) :
-    if (s1 == s2) :
+    if s1 == s2:
       return 1.0
     len1, len2 = (len(s1), len(s2))
 
-    if (len1 == 0 or len2 == 0) :
+    if len1 == 0 or len2 == 0:
       return 0.0
 
     max_dist = (max(len1, len2) // 2 ) - 1
 
     match = 0
-
-    hash_s1 = [0] * len(s1)
-    hash_s2 = [0] * len(s2)
+    hash_s1, hash_s2 = ([0] * len(s1), [0] * len(s2))
 
     for i in range(len1):
       for j in range(max(0, i - max_dist), min(len2, i + max_dist + 1)):
@@ -23,12 +21,10 @@ def jaro_distance(s1: str, s2: str) :
           hash_s2[j] = 1
           match += 1
           break
-
     if match == 0:
       return 0.0
 
     t = 0
-
     point = 0
 
     for i in range(len1):
@@ -47,17 +43,13 @@ def jaro_distance(s1: str, s2: str) :
 
 def jaro_Winkler(s1: str, s2: str):
     jaro_dist = jaro_distance(s1, s2)
-
-    if (jaro_dist > 0.7) :
-
+    if jaro_dist > 0.7:
       prefix = 0
-
       for i in range(min(len(s1), len(s2))):
-        if (s1[i] == s2[i]):
+        if s1[i] == s2[i]:
           prefix += 1
         else:
           break
-
     prefix = min(4, prefix)
     jaro_dist += 0.1 * prefix * (1 - jaro_dist);
 

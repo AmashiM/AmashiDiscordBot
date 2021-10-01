@@ -1,17 +1,25 @@
 from dotenv import load_dotenv
 import os
 from discord_components import DiscordComponents, ComponentsBot
-
-load_dotenv()
 from discord.ext import commands
 import discord
+load_dotenv()
+import gc
 
+ans = None
+while ans is None:
+  val = input("testing? (y/n)")
+  if val not in ['y','n']:
+    continue
+  else:
+    ans = val
 
-class Bot(ComponentsBot, commands.Bot):
-  def __init__(self, command_prefix, help_command=commands.DefaultHelpCommand(), description=None, **options):
-    super(Bot, self).__init__(command_prefix, help_command=help_command, description=description, **options)
+token = os.getenv("TOKEN")
 
-    self.color = discord.Color.from_rgb(221, 69, 245)
+if ans == 'y':
+  token = os.getenv("TEST_TOKEN")
+
+from src.Bot import Bot
 
 
 
@@ -23,6 +31,11 @@ bot = Bot(command_prefix=prefix)
 @bot.event
 async def on_ready():
   print(f"{bot.user} has logged in !")
+
+  if ans == 'n':
+    from app import keep_alive
+    keep_alive()
+    del keep_alive
 
 cogs = [
   f"cogs.{file[:-3]}" for file in os.listdir("./cogs/")
@@ -38,6 +51,6 @@ for cog in cogs:
 print("done registering")
 
 
-bot.run(os.getenv("TOKEN"))
+bot.run(token)
 
 
