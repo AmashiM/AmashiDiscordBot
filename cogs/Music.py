@@ -99,7 +99,7 @@ class AmashiMusic(commands.Cog):
       vc: discord.VoiceChannel = ctx.author.voice.channel
       if ctx.voice_client is None:
         client = await self.create_client(vc)
-        await client.connect(**self.connect_options)
+        await client.connect(reconnect=True)
       else:
         await ctx.voice_client.move_to(vc)
 
@@ -123,9 +123,11 @@ class AmashiMusic(commands.Cog):
     # We're failed to connect to voice channel
     if not music_client:
         return
+    print("music client exists")
 
     # Set announcer
     music_client.register_after_callback(self.bot.announce_next_song)
+    print('registered')
 
     # Get stream url (if success)
     success, info, stream_url = await self.bot.get_stream_url(query)
